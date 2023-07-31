@@ -329,9 +329,17 @@ export const Results = styled.div`
   }
 `
 
-export const ButtonTable = styled.button`
-  background-color: green;
-  color: #ccc;
+export const ButtonTable = styled.button<{ isClicked: boolean }>`
+  background-color: ${props => (props.isClicked ? 'green' : '#ccc')};
+  color: ${props => (props.isClicked ? '#ccc' : 'white')};
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+`
+export const ButtonTableBaixa = styled.button<{ isClickedbaixa: boolean }>`
+  background-color: ${props => (props.isClickedbaixa ? 'red' : '#ccc')};
+  color: ${props => (props.isClickedbaixa ? '#ccc' : 'white')};
   padding: 8px 16px;
   border: none;
   cursor: pointer;

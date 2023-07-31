@@ -11,6 +11,8 @@ import TableEmAlta from '../table/tableAltaBaixa/tableEmAlta'
 export default function ProductTable() {
   const [produtos, setProdutos] = useState<GetProductProps[]>([])
   const [classificacaoSelecionada, setClassificacaoSelecionada] = useState('')
+  const [isClicked, setIsClicked] = useState(false)
+  const [isClickedbaixa, setIsClickedbaixa] = useState(false)
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -23,10 +25,14 @@ export default function ProductTable() {
     fetchData()
   }, [])
   const handleEmAltaClick = () => {
+    setIsClicked(true)
+    setIsClickedbaixa(false)
     setClassificacaoSelecionada('EM_ALTA')
   }
 
-  const handleEmBaixaClick = () => {
+  const handleEmBaixaClickbaixa = () => {
+    setIsClickedbaixa(true)
+    setIsClicked(false)
     setClassificacaoSelecionada('EM_BAIXA')
   }
 
@@ -40,8 +46,15 @@ export default function ProductTable() {
           <S.Title>Produtos</S.Title>
         </S.Divicon>
         <S.DivButton>
-          <S.ButtonTable onClick={handleEmAltaClick}>Em Alta</S.ButtonTable>
-          <S.ButtonTable onClick={handleEmBaixaClick}>Em Baixa</S.ButtonTable>
+          <S.ButtonTable isClicked={isClicked} onClick={handleEmAltaClick}>
+            Em Alta
+          </S.ButtonTable>
+          <S.ButtonTableBaixa
+            isClickedbaixa={isClickedbaixa}
+            onClick={handleEmBaixaClickbaixa}
+          >
+            Em Baixa
+          </S.ButtonTableBaixa>
         </S.DivButton>
       </S.Main>
       {classificacaoSelecionada === 'EM_BAIXA' ? (
@@ -51,11 +64,11 @@ export default function ProductTable() {
       ) : (
         <Table
           id="Id"
-          produto="Cliente"
+          produto="produto"
           percentual="Percentual"
           showIcon={true}
           showStatus={false}
-          type="clientes"
+          type="produtos"
         />
       )}
     </S.DivTable>

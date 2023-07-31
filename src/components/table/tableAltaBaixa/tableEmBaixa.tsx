@@ -5,11 +5,11 @@ import {
   GetClienteProps
 } from '@/service/getclientes/Getclientes'
 import { useEffect, useState } from 'react'
-import { BuscarProduto } from '@/service/getproduct'
+import { BuscarProduto, GetProductProps } from '@/service/getproduct'
 
 export default function TableEmBaixa() {
   const [clientes, setClientes] = useState<GetClienteProps[] | null>(null)
-  const [classificacaoSelecionada, setClassificacaoSelecionada] = useState('')
+  const [produtos, setProdutos] = useState<GetProductProps[]>([])
   useEffect(() => {
     const fetchClientes = async () => {
       try {
@@ -39,7 +39,7 @@ export default function TableEmBaixa() {
     fetchClientes()
   }, [])
 
-  const produtosFiltrados = clientes?.filter(
+  const produtosFiltrados = produtos?.filter(
     item => item.classificacao === 'EM_BAIXA'
   )
 

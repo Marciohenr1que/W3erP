@@ -11,6 +11,8 @@ import TableEmAlta from '../table/tableAltaBaixa/tableEmAlta'
 const ClienteTable = () => {
   const [clientes, setClientes] = useState<GetClienteProps[] | null>(null)
   const [classificacaoSelecionada, setClassificacaoSelecionada] = useState('')
+  const [isClicked, setIsClicked] = useState(false)
+  const [isClickedbaixa, setIsClickedbaixa] = useState(false)
 
   useEffect(() => {
     const fetchClientes = async () => {
@@ -25,10 +27,14 @@ const ClienteTable = () => {
     fetchClientes()
   }, [])
   const handleEmAltaClick = () => {
+    setIsClicked(true)
+    setIsClickedbaixa(false)
     setClassificacaoSelecionada('EM_ALTA')
   }
 
-  const handleEmBaixaClick = () => {
+  const handleEmBaixaClickbaixa = () => {
+    setIsClickedbaixa(true)
+    setIsClicked(false)
     setClassificacaoSelecionada('EM_BAIXA')
   }
 
@@ -59,8 +65,15 @@ const ClienteTable = () => {
           <S.Title>Clientes</S.Title>
         </S.Divicon>
         <S.DivButton>
-          <S.ButtonTable onClick={handleEmAltaClick}>Em Alta</S.ButtonTable>
-          <S.ButtonTable onClick={handleEmBaixaClick}>Em Baixa</S.ButtonTable>
+          <S.ButtonTable isClicked={isClicked} onClick={handleEmAltaClick}>
+            Em Alta
+          </S.ButtonTable>
+          <S.ButtonTableBaixa
+            isClickedbaixa={isClickedbaixa}
+            onClick={handleEmBaixaClickbaixa}
+          >
+            Em Baixa
+          </S.ButtonTableBaixa>
         </S.DivButton>
       </S.Main>
       {classificacaoSelecionada === 'EM_BAIXA' ? (

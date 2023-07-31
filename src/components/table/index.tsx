@@ -9,7 +9,7 @@ import {
 } from '@/service/getclientes/Getclientes'
 
 type TableProps = {
-  type?: 'produtos' | 'clientes'
+  type: 'produtos' | 'clientes'
   id: string
   produto: string
   percentual: string

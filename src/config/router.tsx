@@ -1,7 +1,5 @@
 import { Suspense } from 'react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-
-// PAGES
 import Login from '@/pages/home'
 import Dashboard from '@/pages/homedash'
 import { Spinner } from '@/components/ui'

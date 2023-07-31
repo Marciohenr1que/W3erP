@@ -5,10 +5,11 @@ import {
   GetClienteProps
 } from '@/service/getclientes/Getclientes'
 import { useEffect, useState } from 'react'
+import { BuscarProduto, GetProductProps } from '@/service/getproduct'
 
 export default function TableEmAlta() {
   const [clientes, setClientes] = useState<GetClienteProps[] | null>(null)
-  const [classificacaoSelecionada, setClassificacaoSelecionada] = useState('')
+  const [produtos, setProdutos] = useState<GetProductProps[]>([])
   useEffect(() => {
     const fetchClientes = async () => {
       try {
@@ -23,6 +24,22 @@ export default function TableEmAlta() {
   }, [])
 
   const clientesFiltrados = clientes?.filter(
+    item => item.classificacao === 'EM_ALTA'
+  )
+  useEffect(() => {
+    const fetchClientes = async () => {
+      try {
+        const clienteData = await BuscarProduto()
+        console.log(clienteData.content)
+        setClientes(clienteData.content)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchClientes()
+  }, [])
+
+  const produtosFiltrados = produtos?.filter(
     item => item.classificacao === 'EM_ALTA'
   )
 
@@ -44,6 +61,16 @@ export default function TableEmAlta() {
       </thead>
       <tbody className="tbody">
         {clientesFiltrados?.map(item => (
+          <tr key={item.id}>
+            <S.Td>{item.id}</S.Td>
+            <S.Td>{item.nome}</S.Td>
+            <S.Td>{item.percentual} %</S.Td>
+            <S.Td>
+              <MdKeyboardArrowRight />
+            </S.Td>
+          </tr>
+        ))}
+        {produtosFiltrados?.map(item => (
           <tr key={item.id}>
             <S.Td>{item.id}</S.Td>
             <S.Td>{item.nome}</S.Td>
