@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import * as S from '../../assets/styles/global-styles'
-import { MdKeyboardArrowRight } from 'react-icons/md'
 import { FaUnderline } from 'react-icons/fa'
 import Table from '../table'
 import {

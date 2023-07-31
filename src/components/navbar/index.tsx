@@ -1,12 +1,11 @@
 import * as S from '../../assets/styles/global-styles'
-
 import { BiPieChartAlt } from 'react-icons/bi'
 import { AiOutlineLineChart } from 'react-icons/ai'
 import { HiOutlinePresentationChartLine } from 'react-icons/hi'
 const Navbar = () => {
   return (
     <S.NavbarContainer>
-      <S.Logo src="/src/assets/image/logo (6).png" />
+      <S.Logo src="/src/assets/image/logo.png" />
       <S.NavList>
         <S.NavItem>
           <S.NavLink href="/home">
