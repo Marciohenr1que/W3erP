@@ -65,7 +65,7 @@ export const ImgGraphic = styled.img`
   height: 5.6%;
 `
 export const Legend = styled.legend`
-  font-family: 'Poppins', sans-serif;
+  font-family: sans-serif;
   font-size: 0.9em;
   margin-left: 0.5em;
 `
@@ -330,7 +330,7 @@ export const Results = styled.div`
 `
 
 export const ButtonTable = styled.button`
-  background-color: ${props => (props.active ? 'green' : 'white')};
+  background-color: green;
   color: #ccc;
   padding: 8px 16px;
   border: none;
@@ -487,7 +487,6 @@ export const ArrowIcon = styled(FaArrowRight)`
   color: #888;
 `
 import { AiOutlineUser } from 'react-icons/ai'
-import ReactPaginate from 'react-paginate'
 import { Link } from 'react-router-dom'
 export const HotelIcon = styled(AiOutlineUser)`
   font-size: 36px;
@@ -616,9 +615,9 @@ export const TableBody = styled.tbody`
 export const TableItem = styled.th`
   flex-basis: 100%;
   text-align: center;
-  max-width: 100px; /* Ajuste o valor conforme necessário */
-  white-space: nowrap; /* Evita que o texto quebre a linha */
-  overflow: hidden; /* Esconde qualquer conteúdo que exceda o limite de largura */
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   && button {
     border: none;
@@ -658,9 +657,9 @@ export const TableBodyProximaCompra = styled.div`
 export const TableItemProximaCompra = styled.th`
   flex-basis: 100%;
   text-align: center;
-  max-width: 100px; /* Ajuste o valor conforme necessário */
-  white-space: nowrap; /* Evita que o texto quebre a linha */
-  overflow: hidden; /* Esconde qualquer conteúdo que exceda o limite de largura */
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
   text-overflow: ellipsis;
   && button {
     border: none;
