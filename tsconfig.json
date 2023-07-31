@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
     "target": "ESNext",
     "useDefineForClassFields": true,
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "DOM",
       "DOM.Iterable",
