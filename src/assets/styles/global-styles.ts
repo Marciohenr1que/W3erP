@@ -330,7 +330,7 @@ export const Results = styled.div`
 `
 
 export const ButtonTable = styled.button`
-  background-color: ${props => (props.active ? 'green' : 'white')};
+  background-color: green;
   color: #ccc;
   padding: 8px 16px;
   border: none;
