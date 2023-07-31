@@ -2,7 +2,7 @@ import Navbar from '@/components/navbar'
 import * as S from '../assets/styles/global-styles'
 import Header from '@/components/header/header'
 import Input from '@/components/input'
-import Table from '@/components/table'
+import TableAll from '@/components/tableAll/TableAll'
 import { useEffect, useState } from 'react'
 import {
   GetProduct,
@@ -29,49 +29,36 @@ export default function Product() {
 
     fetchProducts()
   }, [currentPage, query])
+  console.log(query)
 
   const handlePrevClick = () => {
-    setCurrentPage(prevPage => {
-      const newPage = Math.max(prevPage - 1, 1)
-      if (newPage <= startpage) {
-        setStartpage(prevStartPage => Math.max(prevStartPage - 1, 1))
-      }
-      return newPage
-    })
+    setCurrentPage(prevPage => Math.max(prevPage - 1, 1))
   }
 
   const handleNextClick = () => {
-    setCurrentPage(prevPage => {
-      const newPage = Math.min(prevPage + 1, totalpages)
-      if (newPage >= startpage + 3) {
-        setStartpage(prevStartPage =>
-          Math.min(prevStartPage + 1, totalpages - 3)
-        )
-      }
-      return newPage
-    })
+    setCurrentPage(prevPage => Math.min(prevPage + 1, totalpages))
   }
-
+  const handleFilterChange = (filterValue: string) => {
+    setQuery(filterValue)
+    setCurrentPage(1)
+  }
   return (
     <S.BoxGraphics>
       <Navbar />
       <S.Center>
         <Header />
-        <Input title="Produto" />
+        <Input title="Produto" onFilterChange={handleFilterChange} />
         <div className="divproduto">
-          <Table
-            id="Id"
-            produto="Produtos"
-            status={true}
-            showStatus={true}
-            percentual="Percentual"
-            type={'produtos'}
+          <TableAll
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            totalpages={totalpages}
+            products={products}
+            setProducts={setProducts}
+            query={query}
+            handlePrevClick={handlePrevClick}
+            handleNextClick={handleNextClick}
           />
-        </div>
-        <div>
-          <span>
-            {currentPage} e {totalpages}
-          </span>
         </div>
         <S.ContainerPage>
           <S.ButtonPage onClick={handlePrevClick}>&lt; Voltar</S.ButtonPage>
@@ -79,6 +66,7 @@ export default function Product() {
           <S.ButtonPage onClick={handleNextClick}>
             Próxima Página &gt;
           </S.ButtonPage>
+          <h1>Total De: {totalpages}</h1>
         </S.ContainerPage>
       </S.Center>
     </S.BoxGraphics>

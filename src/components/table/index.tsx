@@ -18,6 +18,7 @@ type TableProps = {
   showStatus?: boolean
   productfilter?: GetproductProps
   clientefilter?: GetCliente
+  data?: GetproductProps
 }
 
 type GetproductProps = {

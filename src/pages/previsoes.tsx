@@ -24,24 +24,33 @@ export default function Prevision() {
   const navigate = useNavigate()
   //armazena os dados da api
   const [predictionData, setPredictionData] = useState<HotelData[]>([])
+  const [searchQuery, setSearchQuery] = useState('')
+  const [currentPage, setCurrentPage] = useState(1)
+  const [totalpages, setTotalPages] = useState(0)
   //ligando para api
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const prediction = await GetPreditionCard() //obter os dados
-        setPredictionData(prediction ? prediction.content : [])
+        const prediction = await GetPreditionCard(searchQuery, currentPage) //obter os dados
+        setPredictionData(prediction.content)
+        setTotalPages(prediction.totalPages)
       } catch (error) {
         console.error(error)
       }
     }
     fetchData()
-  }, [])
+  }, [searchQuery, currentPage])
+  console.log(searchQuery)
+  const handleFilterChange = (filterValue: string) => {
+    setSearchQuery(filterValue)
+    setCurrentPage(1)
+  }
   return (
     <S.BoxGraphics>
       <Navbar />
       <S.Center>
         <Header />
-        <Input title="Predições" />
+        <Input title="Predições" onFilterChange={handleFilterChange} />
         <S.Boxcard>
           {predictionData.map(hotelData => (
             <S.CardContainer key={hotelData.id}>

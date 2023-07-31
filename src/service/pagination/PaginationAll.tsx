@@ -51,7 +51,7 @@ export const GetProduct = async (
       params: {
         query,
         page: page - 1,
-        size: 10
+        size: 20
       }
     })
 

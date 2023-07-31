@@ -792,6 +792,7 @@ export const TableDivAlta = styled.div`
 `
 export const ContainerPage = styled.div`
   display: flex;
+  flex-direction: end;
   align-items: center;
   justify-content: center;
   && span {

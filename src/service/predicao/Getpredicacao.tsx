@@ -38,14 +38,24 @@ export type GetPreditionCardProps = {
   totalPages: number
 }
 
-export const GetPreditionCard = async (): Promise<GetPreditionCardProps> => {
+export const GetPreditionCard = async (
+  query: string,
+  page: number
+): Promise<GetPreditionCardProps> => {
   try {
     const token = localStorage.getItem('token')
     const headers = {
       Authorization: `Bearer ${token}`,
       'X-TENANT-ID': 'arnia'
     }
-    const result = await ApiService.get('/app/predicao', { headers })
+    const result = await ApiService.get('/app/predicao', {
+      headers,
+      params: {
+        query,
+        page: 20,
+        size: 20
+      }
+    })
 
     if (result.status === 200) {
       return result.data
