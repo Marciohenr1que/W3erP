@@ -1,0 +1,60 @@
+import {
+  GetProductClient,
+  GetProductResumo
+} from '@/service/Getprodutoresumo/ProducteclienteResume'
+import * as S from '../../assets/styles/global-styles'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+
+export default function ClienteMedia() {
+  const [productData, setProductData] = useState<GetProductResumo | null>(null)
+  const { id } = useParams()
+
+  useEffect(() => {
+    const fetchClientData = async () => {
+      try {
+        const clientSummary = await GetProductClient(id!)
+        console.log(clientSummary)
+        setProductData(clientSummary)
+      } catch (error) {}
+    }
+
+    fetchClientData()
+  }, [id])
+  return (
+    <div>
+      <S.CustomDiv>
+        <h1>{productData?.nome}</h1>
+        <S.ContainerMedia>
+          <S.DivCard1>
+            <S.Divh4>Média 120 dias</S.Divh4>
+            <h1>{productData?.media120Dias}</h1>
+          </S.DivCard1>
+          <S.DemaisCards>
+            <h4>Últimos 30 dias</h4>
+            <div className="ultimo30dias">
+              <p className="teste">{productData?.ultimos30Dias}</p>
+              <div>
+                <p className="greenumber">
+                  {productData?.percentualUltimos30Dias}
+                </p>
+              </div>
+            </div>
+          </S.DemaisCards>
+          <S.DemaisCards>
+            <h4>Últimos 60 dias</h4>
+            <p className="teste">{productData?.ultimos60Dias}</p>
+          </S.DemaisCards>
+          <S.DemaisCards>
+            <h4>Últimos 90 dias</h4>
+            <p className="teste">{productData?.ultimos90Dias}</p>
+          </S.DemaisCards>
+          <S.DemaisCards>
+            <h4>Últimos 120 dias</h4>
+            <p className="teste">{productData?.ultimos120Dias}</p>
+          </S.DemaisCards>
+        </S.ContainerMedia>
+      </S.CustomDiv>
+    </div>
+  )
+}
