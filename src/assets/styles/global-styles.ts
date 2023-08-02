@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
 export default createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+
   :root {
     --dark: #313131;
   }
@@ -8,6 +10,7 @@ export default createGlobalStyle`
   * {
     margin: 0;
     padding: 0;
+
   }
 
   *, ::after, ::before {
@@ -21,9 +24,11 @@ export default createGlobalStyle`
   body, input, select, textarea {
     font-size: 1rem;
     color: var(--dark);
+   font-family: 'Poppins', sans-serif;
   }
 
 `
+
 export const Container = styled.div`
   display: flex;
   height: 100vh;
@@ -258,10 +263,11 @@ export const Center = styled.div`
     justify-content: center;
   }
 `
+
 export const Centergraphics = styled.div`
   background-color: #001c98;
   color: white;
-  width: 95%;
+  width: 98%;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
@@ -270,10 +276,10 @@ export const Centergraphics = styled.div`
 `
 export const Num = styled.div`
   background-color: #02156a;
-  width: 22%;
+  width: 100%;
   display: flex;
-  gap: 30px;
-  padding: 10px;
+  gap: 10px;
+  padding: 10px 30px 10px 10px;
   border-radius: 10px;
 `
 
@@ -282,38 +288,35 @@ export const GraphicsCenter = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
 `
 
-export const Porcentagem = styled.div`
+export const Porcentagem = styled.span`
   background-color: #000e4d;
-  border-radius: 100%;
-  padding: 14px;
-  margin-left: 8px;
+  border-radius: 50%;
+  padding: 5px;
+  margin-left: 2px;
   border: 4px solid #796ce0;
-  box-sizing: border-box;
-  position: relative;
-  font-size: 24px;
+  font-size: 13px;
   color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
 `
-export const Positive = styled.div`
-  border-radius: 20px;
+export const Positive = styled.span`
+  border-radius: 15px;
   color: white;
   background-color: #00c247;
-  margin-left: 10px;
-  width: 70%;
-  padding: 2px;
+  padding: 4px 10px 1px 10px;
+  font-size: 13px;
+  margin: 0 auto;
 `
-export const Negative = styled.div`
+export const Negative = styled.span`
   border-radius: 30px;
+  font-size: 14px;
   color: white;
   background-color: #ff3333;
   padding: 0 6px 0 6px;
   margin-left: 10px;
-  width: 70%;
   padding: 2px;
 `
 
@@ -321,12 +324,45 @@ export const Title = styled.span`
   display: flex;
   justify-content: space-between;
   font-size: 18px;
+  font-weight: bold;
+  .fundoicone {
+    padding: 10px;
+    background-color: #c5cfff;
+    border-radius: 10px;
+  }
+  .iconecliente {
+    padding: 10px;
+    background-color: #001c98;
+    border-radius: 10px;
+  }
+`
+export const IconeCliente = styled(BsPeople)`
+  color: white;
+  font-size: 25px;
+`
+
+export const IconeEstilizado = styled(RiShoppingBasketLine)`
+  color: #001c98;
+  font-size: 25px;
+  background-color: #c5cfff;
 `
 export const Results = styled.div`
   font-size: 15px;
-  && span {
-    font-size: 25px;
+  padding: 10px && span {
+    font-weight: bold;
   }
+  && p {
+    white-space: nowrap;
+    color: #c5cfff;
+  }
+  .flexegreen {
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+  }
+`
+export const BoldText = styled.span`
+  font-weight: bold;
 `
 
 export const ButtonTable = styled.button<{ isClicked: boolean }>`
@@ -349,17 +385,21 @@ export const ButtonTableBaixa = styled.button<{ isClickedbaixa: boolean }>`
 export const Table = styled.table`
   border-collapse: collapse;
   width: 100%;
-  background-color: #ccc;
   margin-top: 20px;
+  font-size: 12px;
+  color: #212121;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
   .tbody {
-    text-align: center;
+    background-color: #fafafa;
+    &:nth-child(odd) {
+      background-color: lightgray;
+    }
   }
   .tr {
-    background-color: #001c98;
-    color: white;
+    background-color: black;
   }
   .testeleft {
     border-top-left-radius: 20px;
@@ -377,6 +417,7 @@ export const Th = styled.th`
 export const Td = styled.td`
   padding: 8px;
   border-bottom: 1px solid lightgray;
+
   .green {
     padding: 6px 10px 6px 10px;
     background-color: #d9fee6;
@@ -496,6 +537,8 @@ export const ArrowIcon = styled(FaArrowRight)`
 `
 import { AiOutlineUser } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
+import { RiShoppingBasketLine } from 'react-icons/ri'
+import { BsPeople } from 'react-icons/bs'
 export const HotelIcon = styled(AiOutlineUser)`
   font-size: 36px;
   padding: 5px;
@@ -611,7 +654,7 @@ export const TableHead = styled.thead`
 `
 
 export const TableBody = styled.tbody`
-  background-color: gray;
+  background-color: #fafafa;
   display: flex;
   justify-content: space-between;
   padding: 10px;
@@ -653,7 +696,7 @@ export const TableHeadProximaCompra = styled.thead`
 `
 
 export const TableBodyProximaCompra = styled.div`
-  background-color: gray;
+  background-color: #fafafa;
   display: flex;
   justify-content: space-between;
   padding: 10px;

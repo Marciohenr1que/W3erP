@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 import * as S from '../../assets/styles/global-styles'
-import { MdKeyboardArrowRight } from 'react-icons/md'
-import { RiShoppingBasketLine } from 'react-icons/ri'
 import Table from '../table'
 import { BuscarProduto } from '@/service/getproduct'
 import { GetProductProps } from '@/service/getproduct'
@@ -11,6 +9,7 @@ import TableEmAlta from '../table/tableAltaBaixa/tableEmAlta'
 export default function ProductTable() {
   const [produtos, setProdutos] = useState<GetProductProps[]>([])
   const [classificacaoSelecionada, setClassificacaoSelecionada] = useState('')
+  const [classificacao, setClassificacao] = useState('')
   const [isClicked, setIsClicked] = useState(false)
   const [isClickedbaixa, setIsClickedbaixa] = useState(false)
   useEffect(() => {
@@ -33,7 +32,7 @@ export default function ProductTable() {
   const handleEmBaixaClickbaixa = () => {
     setIsClickedbaixa(true)
     setIsClicked(false)
-    setClassificacaoSelecionada('EM_BAIXA')
+    setClassificacao('EM_BAIXA')
   }
 
   return (
@@ -41,7 +40,9 @@ export default function ProductTable() {
       <S.Main>
         <S.Divicon>
           <S.Title>
-            <RiShoppingBasketLine size={25} />
+            <div className="fundoicone">
+              <S.IconeEstilizado />
+            </div>
           </S.Title>
           <S.Title>Produtos</S.Title>
         </S.Divicon>
@@ -57,14 +58,14 @@ export default function ProductTable() {
           </S.ButtonTableBaixa>
         </S.DivButton>
       </S.Main>
-      {classificacaoSelecionada === 'EM_BAIXA' ? (
+      {classificacao === 'EM_BAIXA' ? (
         <TableEmBaixa />
       ) : classificacaoSelecionada === 'EM_ALTA' ? (
         <TableEmAlta />
       ) : (
         <Table
           id="Id"
-          produto="produto"
+          produto="Produto"
           percentual="Percentual"
           showIcon={true}
           showStatus={false}

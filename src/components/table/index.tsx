@@ -125,19 +125,6 @@ export default function TableComponent({
               <S.Td>{item.id}</S.Td>
               <S.Td>{item.nome}</S.Td>
               <S.Td>{item.percentual} %</S.Td>
-              {showStatus && (
-                <S.Td>
-                  {item.classificacao === 'EM_ALTA' && (
-                    <span className="green">ALTA</span>
-                  )}
-                  {item.classificacao === 'EM_BAIXA' && (
-                    <span className="red">BAIXA</span>
-                  )}
-                  {item.classificacao === 'NEUTRO' && (
-                    <span className="neutro">NEUTRO</span>
-                  )}
-                </S.Td>
-              )}
               {showIcon && (
                 <S.Td onClick={() => navigate(`/${type}/${item.id}`)}>
                   <MdKeyboardArrowRight />

@@ -27,7 +27,7 @@ export default function TableEmBaixa() {
     item => item.classificacao === 'EM_BAIXA'
   )
   useEffect(() => {
-    const fetchClientes = async () => {
+    const fetchprodutos = async () => {
       try {
         const clienteData = await BuscarProduto()
         console.log(clienteData.content)
@@ -36,7 +36,7 @@ export default function TableEmBaixa() {
         console.error(error)
       }
     }
-    fetchClientes()
+    fetchprodutos()
   }, [])
 
   const produtosFiltrados = produtos?.filter(

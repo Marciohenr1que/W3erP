@@ -29,8 +29,8 @@ export default function TableAll({
         <tr style={{ backgroundColor: '#001c98' }}>
           <S.Th className="testeleft">id</S.Th>
           <S.Th>Produtos</S.Th>
+          <S.Th>Status</S.Th>
           <S.Th>Percentual</S.Th>
-          <S.Th></S.Th>
           <S.Th style={{ backgroundColor: '#001c98' }}></S.Th>
           <S.Th
             className="testeright"
@@ -43,6 +43,17 @@ export default function TableAll({
           <tr key={product.id}>
             <S.Td>{product.id}</S.Td>
             <S.Td>{product.nome}</S.Td>
+            <S.Td>
+              {product.classificacao === 'EM_ALTA' && (
+                <span className="green">ALTA</span>
+              )}
+              {product.classificacao === 'EM_BAIXA' && (
+                <span className="red">BAIXA</span>
+              )}
+              {product.classificacao === 'NEUTRO' && (
+                <span className="neutro">NEUTRO</span>
+              )}
+            </S.Td>
             <S.Td>{product.percentual} %</S.Td>
             <S.Td>
               <MdKeyboardArrowRight />

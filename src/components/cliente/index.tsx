@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import * as S from '../../assets/styles/global-styles'
-import { FaUnderline } from 'react-icons/fa'
 import Table from '../table'
 import {
   BuscarCliente,
@@ -8,6 +7,7 @@ import {
 } from '@/service/getclientes/Getclientes'
 import TableEmBaixa from '../table/tableAltaBaixa/tableEmBaixa'
 import TableEmAlta from '../table/tableAltaBaixa/tableEmAlta'
+import { BsPeople } from 'react-icons/bs'
 const ClienteTable = () => {
   const [clientes, setClientes] = useState<GetClienteProps[] | null>(null)
   const [classificacaoSelecionada, setClassificacaoSelecionada] = useState('')
@@ -60,7 +60,9 @@ const ClienteTable = () => {
       <S.Main>
         <S.Divicon>
           <S.Title>
-            <FaUnderline size={25} />
+            <div className="iconecliente">
+              <S.IconeCliente />
+            </div>
           </S.Title>
           <S.Title>Clientes</S.Title>
         </S.Divicon>

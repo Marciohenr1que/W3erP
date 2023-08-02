@@ -2,6 +2,7 @@ import { GetDashBoard, GetSummary } from '@/service/dashboard/ResumeDash'
 import * as S from '../../assets/styles/global-styles'
 import { useState, useEffect } from 'react'
 import { CalendarDashboard } from '../mostrarcalendario/Calendario'
+
 export default function Graphics() {
   const [dashboardData, setDashboardData] = useState<GetDashBoard | null>(null)
 
@@ -34,12 +35,19 @@ export default function Graphics() {
             <S.Porcentagem>
               {dashboardData.percentualTotalProdutosAlta}%
             </S.Porcentagem>
+
             <S.Results>
-              <p>Total produtos em alta</p>
-              <span>{dashboardData.quantidadeProdutosAlta}</span>
-              <S.Positive>
-                +{dashboardData.percentualTotalProdutosAlta}%
-              </S.Positive>
+              <p>
+                Total <S.BoldText>produtos</S.BoldText> em alta
+              </p>
+              <div className="flexegreen">
+                <h2>{dashboardData.quantidadeProdutosAlta}</h2>
+                <div>
+                  <S.Positive>
+                    {dashboardData.percentualTotalProdutosAlta}%
+                  </S.Positive>
+                </div>
+              </div>
             </S.Results>
           </S.Num>
           <S.Num>
@@ -47,11 +55,17 @@ export default function Graphics() {
               {dashboardData.percentualTotalProdutosBaixa}%
             </S.Porcentagem>
             <S.Results>
-              <p>Total produtos em baixa</p>
-              <span>{dashboardData.quantidadeProdutosBaixa}</span>
-              <S.Negative>
-                {dashboardData.percentualVariacaoProdutosBaixa}%
-              </S.Negative>
+              <p>
+                Total <S.BoldText>produtos</S.BoldText> em baixa
+              </p>
+              <div className="flexegreen">
+                <h2>{dashboardData.quantidadeProdutosBaixa}</h2>
+                <div>
+                  <S.Negative>
+                    {dashboardData.percentualVariacaoProdutosBaixa}%
+                  </S.Negative>
+                </div>
+              </div>
             </S.Results>
           </S.Num>
           <S.Num>
@@ -59,11 +73,17 @@ export default function Graphics() {
               {dashboardData.percentualVariacaoClientesAlta}%
             </S.Porcentagem>
             <S.Results>
-              <p>Total clientes em alta</p>
-              <span>{dashboardData.quantidadeClientesAlta}</span>
-              <S.Positive>
-                +{dashboardData.percentualVariacaoClientesAlta}%
-              </S.Positive>
+              <p>
+                Total <S.BoldText>clientes</S.BoldText> em alta
+              </p>
+              <div className="flexegreen">
+                <h2>{dashboardData.quantidadeClientesAlta}</h2>
+                <div>
+                  <S.Positive>
+                    +{dashboardData.percentualVariacaoClientesAlta}%
+                  </S.Positive>
+                </div>
+              </div>
             </S.Results>
           </S.Num>
           <S.Num>
@@ -71,11 +91,17 @@ export default function Graphics() {
               {dashboardData.percentualTotalClientesBaixa}%
             </S.Porcentagem>
             <S.Results>
-              <p>Total clientes em baixa</p>
-              <span>{dashboardData.quantidadeClientesBaixa}</span>
-              <S.Negative>
-                -{dashboardData.percentualVariacaoClientesBaixa}%
-              </S.Negative>
+              <p>
+                Total <S.BoldText>clientes</S.BoldText> em baixa
+              </p>
+              <div className="flexegreen">
+                <h2>{dashboardData.quantidadeClientesBaixa}</h2>
+                <div>
+                  <S.Negative>
+                    {dashboardData.percentualVariacaoClientesBaixa}%
+                  </S.Negative>
+                </div>
+              </div>
             </S.Results>
           </S.Num>
         </S.GraphicsCenter>

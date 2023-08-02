@@ -52,7 +52,7 @@ export const GetPreditionCard = async (
       headers,
       params: {
         query,
-        page: 20,
+        page: 1,
         size: 20
       }
     })

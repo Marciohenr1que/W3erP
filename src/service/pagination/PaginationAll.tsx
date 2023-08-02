@@ -3,7 +3,7 @@ import { ApiService } from '../baseurl/Baseurl'
 
 export type GetProductPropsAll = {
   content: {
-    classificacao: 'EM_ALTA' | 'EM_BAIXA'
+    classificacao: 'EM_ALTA' | 'EM_BAIXA' | 'NEUTRO'
     id: number
     nome: string
     percentual: number
