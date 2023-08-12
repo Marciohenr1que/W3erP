@@ -1,2 +1,1 @@
-# W3erP
-trabalho modulo2 
+# React e typescript W3erp
